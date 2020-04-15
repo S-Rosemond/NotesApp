@@ -5,9 +5,11 @@ import DisplayNotes from '../view/DisplayNotes';
 const HomePage = () => {
 	const [ notes, setNote ] = useState([]);
 	const [ entry, setEntry ] = useState({
+		_id: '',
 		title: '',
 		body: '',
-		dateCreated: new Date(Date.now()).toString()
+		dateCreated: '',
+		lastUpdated: ''
 	});
 	const [ alert, setAlert ] = useState('');
 
@@ -21,9 +23,11 @@ const HomePage = () => {
 	const submit = (e) => {
 		e.preventDefault();
 
-		const newNotes = JSON.stringify(notes);
+		if (notes.length > 0) {
+			const newNotes = JSON.stringify(notes);
 
-		localStorage.setItem('notes', newNotes);
+			localStorage.setItem('notes', newNotes);
+		}
 	};
 
 	const createEntry = (e) => {
@@ -31,22 +35,33 @@ const HomePage = () => {
 	};
 
 	const addNote = (entries) => {
+		if (!entries.body) {
+			setAlert('The note field cannot be blank');
+
+			setTimeout(() => setAlert(''), 5000);
+			return;
+		}
+
 		if (!entries.title) {
 			const date = new Date(Date.now());
 
-			entries.title = date.toLocaleDateString();
+			entries.title = date.toDateString();
 		}
 
-		if (!entries.body) {
-			setAlert('This field cannot be blank');
-			return;
-		}
-		setNote(...notes, entries);
+		entries._id = entries.length;
+		entries.lastUpdated = new Date().toLocaleDateString();
+		entries.dateCreated = new Date(Date.now()).toString();
+
+		setNote([ ...notes, entries ]);
+
+		console.log(notes);
 	};
+
+	const updateNote = (params) => {};
 
 	return (
 		<Fragment>
-			{notes && <DisplayNotes />}
+			{/* {notes && <DisplayNotes />} */}
 			{alert && <Alert message={alert} />}
 			<form onSubmit={submit}>
 				<label>
@@ -55,8 +70,9 @@ const HomePage = () => {
 				</label>
 				<label>
 					Note:
-					<textarea on={createEntry} />
+					<textarea name="body" onChange={createEntry} />
 				</label>
+				<button>Edit Note</button>
 				<button onClick={addNote.bind(null, entry)}> Add Note </button>
 			</form>
 		</Fragment>

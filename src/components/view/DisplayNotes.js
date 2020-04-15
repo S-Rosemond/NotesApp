@@ -6,8 +6,11 @@ const DisplayNotes = () => {
 
 	useEffect(() => {
 		let savedNotes = localStorage.getItem('notes');
-		savedNotes = JSON.parse(savedNotes);
-		setViews(savedNotes);
+		if (savedNotes) {
+			savedNotes = JSON.parse(savedNotes);
+			console.log(savedNotes);
+			setViews([ ...savedNotes ]);
+		}
 	}, []);
 
 	return (
