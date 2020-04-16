@@ -1,17 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
-const DisplayNotes = ({ setNote, notes }) => {
+const DisplayNotes = ({ notes, setNote }) => {
 	// choosing not to use context, small app
 
-	const updateNote = () => {};
+	const updateNote = (id) => {};
 
-	function deleteNote(id) {
-		console.log(id);
-
+	const deleteNote = (id) => {
 		const update = notes.filter((el) => el._id !== id);
-
 		setNote([ ...update ]);
-	}
+		const newNotes = JSON.stringify(update);
+
+		localStorage.setItem('notes', newNotes);
+	};
 
 	return (
 		notes && (
@@ -23,7 +23,7 @@ const DisplayNotes = ({ setNote, notes }) => {
 							<h2>{title}</h2>
 							<div>{body}</div>
 							<button>Edit</button>
-							<button onClick={deleteNote.bind(null, idx)}>Delete</button>
+							<button onClick={deleteNote.bind(null, el._id)}>Delete</button>
 						</div>
 					);
 				})}

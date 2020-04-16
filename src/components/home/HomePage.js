@@ -50,7 +50,7 @@ const HomePage = () => {
 			entries.title = date.toDateString();
 		}
 
-		entries._id = notes.length;
+		entries._id = notes.length + 'abc';
 		entries.lastUpdated = new Date().toLocaleDateString();
 		entries.dateCreated = new Date(Date.now()).toString();
 
@@ -71,7 +71,7 @@ const HomePage = () => {
 				</label>
 				<button onClick={addNote.bind(null, entry)}> Add Note </button>
 			</form>
-			{notes && <DisplayNotes setNote={setNote} notes={notes} />}
+			<DisplayNotes setNote={setNote} notes={notes} />
 		</Fragment>
 	);
 };
