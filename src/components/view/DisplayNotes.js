@@ -1,27 +1,29 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 
-const DisplayNotes = () => {
+const DisplayNotes = ({ setNote, notes }) => {
 	// choosing not to use context, small app
-	const [ views, setViews ] = useState(null);
 
-	useEffect(() => {
-		let savedNotes = localStorage.getItem('notes');
-		if (savedNotes) {
-			savedNotes = JSON.parse(savedNotes);
-			console.log(savedNotes);
-			setViews([ ...savedNotes ]);
-		}
-	}, []);
+	const updateNote = () => {};
+
+	function deleteNote(id) {
+		console.log(id);
+
+		const update = notes.filter((el) => el._id !== id);
+
+		setNote([ ...update ]);
+	}
 
 	return (
-		views && (
+		notes && (
 			<Fragment>
-				{views.map((el, idx) => {
+				{notes.map((el, idx) => {
 					const { title, body } = el;
 					return (
 						<div key={idx}>
 							<h2>{title}</h2>
 							<div>{body}</div>
+							<button>Edit</button>
+							<button onClick={deleteNote.bind(null, idx)}>Delete</button>
 						</div>
 					);
 				})}

@@ -3,21 +3,23 @@ import Alert from '../util/Alert';
 import DisplayNotes from '../view/DisplayNotes';
 
 const HomePage = () => {
-	const [ notes, setNote ] = useState([]);
-	const [ entry, setEntry ] = useState({
+	const initialState = {
 		_id: '',
 		title: '',
 		body: '',
 		dateCreated: '',
 		lastUpdated: ''
-	});
+	};
+
+	const [ notes, setNote ] = useState([]);
+	const [ entry, setEntry ] = useState(initialState);
 	const [ alert, setAlert ] = useState('');
 
 	useEffect(() => {
 		let savedNotes = localStorage.getItem('notes');
-		savedNotes = JSON.parse(savedNotes);
+		const parsedNotes = JSON.parse(savedNotes);
 
-		if (savedNotes) setNote(savedNotes);
+		if (parsedNotes) setNote(parsedNotes);
 	}, []);
 
 	const submit = (e) => {
@@ -48,20 +50,15 @@ const HomePage = () => {
 			entries.title = date.toDateString();
 		}
 
-		entries._id = entries.length;
+		entries._id = notes.length;
 		entries.lastUpdated = new Date().toLocaleDateString();
 		entries.dateCreated = new Date(Date.now()).toString();
 
 		setNote([ ...notes, entries ]);
-
-		console.log(notes);
 	};
-
-	const updateNote = (params) => {};
 
 	return (
 		<Fragment>
-			{/* {notes && <DisplayNotes />} */}
 			{alert && <Alert message={alert} />}
 			<form onSubmit={submit}>
 				<label>
@@ -72,9 +69,9 @@ const HomePage = () => {
 					Note:
 					<textarea name="body" onChange={createEntry} />
 				</label>
-				<button>Edit Note</button>
 				<button onClick={addNote.bind(null, entry)}> Add Note </button>
 			</form>
+			{notes && <DisplayNotes setNote={setNote} notes={notes} />}
 		</Fragment>
 	);
 };
