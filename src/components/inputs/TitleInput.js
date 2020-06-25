@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
-import { Label, Input } from '@rebass/forms';
-import { Box } from 'rebass';
+import React, { Fragment, useContext } from 'react';
+import { Input } from 'semantic-ui-react';
 import FormContext from './../../context/Form.context';
 
 const TitleInput = () => {
@@ -8,17 +7,23 @@ const TitleInput = () => {
   const { createEntry, entry } = formContext;
 
   return (
-    <Box>
-      <Label htmlFor='title'>Title</Label>
+    <Fragment>
       <Input
+        label='Title'
         id='title'
         name='title'
         type='text'
         placeholder='Title your notes'
+        size='massive'
         onChange={createEntry}
       />
-      {console.log(entry)}
-    </Box>
+      <Input
+        label='Search'
+        size='massive'
+        icon='search'
+        placeholder='Search...'
+      />
+    </Fragment>
   );
 };
 

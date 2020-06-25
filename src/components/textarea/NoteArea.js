@@ -1,16 +1,24 @@
-import React, { useContext } from 'react';
-import { Label, Textarea } from '@rebass/forms';
-import { Box } from 'rebass';
+import React, { Fragment, useContext } from 'react';
 import FormContext from '../../context/Form.context';
+import { TextArea, Label } from 'semantic-ui-react';
+
+import styles from './NoteArea.module.css';
 
 const NoteArea = () => {
   const formContext = useContext(FormContext);
   const { createEntry } = formContext;
   return (
-    <Box>
-      <Label htmlFor='body'>Note</Label>
-      <Textarea id='body' name='body' onChange={createEntry} />
-    </Box>
+    <Fragment>
+      <Label htmlFor='body' className={styles.label}>
+        <h4>Note</h4>
+      </Label>
+      <TextArea
+        id='body'
+        name='body'
+        style={{ minHeight: 200, minWidth: 300 }}
+        onChange={createEntry}
+      />
+    </Fragment>
   );
 };
 
