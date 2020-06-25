@@ -1,9 +1,12 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 
 const DisplayNotes = ({ notes, setNote }) => {
 	// choosing not to use context, small app
 
-	const updateNote = (id) => {};
+	const updateNote = (id) => {
+		// const oldNote =	notes.find((el) => el.id === id )
+		// const newNote ={...oldNote}
+	};
 
 	const deleteNote = (id) => {
 		const update = notes.filter((el) => el._id !== id);
