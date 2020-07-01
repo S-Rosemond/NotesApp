@@ -1,30 +1,11 @@
 import React, { Fragment, useContext } from 'react';
-import { Input } from 'semantic-ui-react';
-import FormContext from './../../context/Form.context';
+import { useFormContext } from './../../context/Form.state';
 
 const TitleInput = () => {
-  const formContext = useContext(FormContext);
+  const formContext = useFormContext();
   const { createEntry, entry } = formContext;
 
-  return (
-    <Fragment>
-      <Input
-        label='Title'
-        id='title'
-        name='title'
-        type='text'
-        placeholder='Title your notes'
-        size='massive'
-        onChange={createEntry}
-      />
-      <Input
-        label='Search'
-        size='massive'
-        icon='search'
-        placeholder='Search...'
-      />
-    </Fragment>
-  );
+  return <Fragment></Fragment>;
 };
 
 export default TitleInput;

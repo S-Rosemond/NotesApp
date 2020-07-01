@@ -1,11 +1,10 @@
 import React, { Fragment, useContext } from 'react';
-import FormContext from '../../context/Form.context';
-import { TextArea, Label } from 'semantic-ui-react';
+import { useFormContext } from './../../context/Form.state';
 
 import styles from './NoteArea.module.css';
 
 const NoteArea = () => {
-  const formContext = useContext(FormContext);
+  const formContext = useFormContext();
   const { createEntry } = formContext;
   return (
     <Fragment>

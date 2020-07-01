@@ -1,3 +1,4 @@
+export const CKE_SET_ENTRY = 'CKE_SET_ENTRY';
 export const SET_ENTRY = 'SET_ENTRY';
 export const CLEAR_ENTRY = 'CLEAR_ENTRY';
 export const ADD_NOTES = 'ADD_NOTES';
