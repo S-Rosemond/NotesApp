@@ -1,12 +1,10 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
-import mainTheme from './../theme/main.theme';
-// import CreateNotePage from './../components/notes/CreateNotePage';
-import SearchAppBar from './../components/navigation/SearchAppBar';
-import FormState from '../context/Form.state';
-import DocEditor from './../components/ckeditor/DocEditor';
-import temp from '../components/view/Temp';
+import mainTheme from '../theme/main.theme';
+import SearchAppBar from '../components/navigation/SearchAppBar';
+import FormState from '../context/Form.state.jsx';
+import { CreateNotePage, HomePage } from '../view/index';
 
 const App = () => {
   return (
@@ -16,7 +14,8 @@ const App = () => {
           <Router>
             <SearchAppBar />
             <Switch>
-              <Route to='/' exact component={temp} />
+              <Route path='/' exact component={HomePage} />
+              <Route path='/create' exact component={CreateNotePage} />
             </Switch>
           </Router>
         </FormState>

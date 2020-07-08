@@ -1,9 +1,9 @@
 import React from 'react';
-import DocEditor from '../ckeditor/DocEditor';
-import { useFormContext } from '../../context/Form.state';
+import DocEditor from '../../components/ckeditor/DocEditor';
+import { useFormContext } from '../../context/Form.state.jsx';
 
-import styles from './Temp.module.css';
-import TitleInput from './../inputs/TitleInput';
+import styles from './CreateNotes.module.css';
+import TitleInput from '../../components/inputs/TitleInput.jsx';
 
 const Temp = () => {
   const formContext = useFormContext();

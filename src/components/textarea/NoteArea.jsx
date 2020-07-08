@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { useFormContext } from './../../context/Form.state';
+import { useFormContext } from '../../context/Form.state';
 
 import styles from './NoteArea.module.css';
 

@@ -8,11 +8,16 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles } from '@material-ui/core/styles';
 import navTheme from './../../theme/templates/navigation';
+import { useFormContext } from './../../context/Form.state';
 
 const useStyles = makeStyles(navTheme);
 
 export default function SearchAppBar() {
   const classes = useStyles();
+  const formContext = useFormContext();
+  const { createPage } = formContext;
+  // (todo) change Icon button Menu to back arrow if true: createPage
+  // link back arrow to home
 
   return (
     <div className={classes.root}>

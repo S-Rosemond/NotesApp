@@ -1,5 +1,5 @@
 import React, { useReducer, useContext } from 'react';
-import FormContext from './Form.context';
+import FormContext from './Form.context.jsx';
 import FormReducer from './Form.reducer';
 
 import { SET_ENTRY, ADD_NOTES, CKE_SET_ENTRY } from './Form.types.js';
@@ -8,6 +8,7 @@ const FormState = (props) => {
   const initialState = {
     entry: {},
     notes: [],
+    createPage: false,
   };
 
   const [state, dispatch] = useReducer(FormReducer, initialState);
