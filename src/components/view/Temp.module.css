@@ -1,0 +1,12 @@
+.editor {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.editor > .ck.ck-editor__editable_inline {
+  min-height: 300px !important;
+}
+
+.input-space {
+  margin-bottom: 1.5em;
+}

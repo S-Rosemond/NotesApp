@@ -1,0 +1,15 @@
+.input_bar {
+  padding: 8px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.label {
+  font-weight: 900;
+  font-size: 1.5em;
+  margin: 0.5em 0;
+}
