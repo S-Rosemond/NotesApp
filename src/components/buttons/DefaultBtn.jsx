@@ -6,10 +6,11 @@ const DefaultBtn = ({
   color = 'primary',
   text = 'Button',
   size = 'medium',
+  fullWidth = true,
 }) => {
   return (
     <Fragment>
-      <Button variant={variant} color={color} size={size}>
+      <Button variant={variant} color={color} size={size} fullWidth={fullWidth}>
         {text}
       </Button>
     </Fragment>

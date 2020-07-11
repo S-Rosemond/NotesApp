@@ -3,10 +3,24 @@
   max-width: 700px;
 }
 
-.editor > .ck.ck-editor__editable_inline {
+/* correct but maybe not enough specificity to overwrite default. Look for alt to edit ckeditor */
+.editor > .ck > .ck.ck-editor__editable_inline {
+  min-height: 300px !important;
+}
+/* correct but maybe not enough specificity to overwrite default. Look for alt to edit ckeditor */
+.editor > .ck > .ck > .ck-editor__editable_inline,
+.editor > .ck > .ck > .ck-editor__editable_inline:focus {
   min-height: 300px !important;
 }
 
-.input-space {
+/* This works as alt since targeting .ck-editor__editable_inline doesn't work */
+div[role='textbox'] {
+  min-height: 100px !important;
+}
+.myb {
   margin-bottom: 1.5em;
+}
+
+.myt {
+  margin-top: 1.5em;
 }

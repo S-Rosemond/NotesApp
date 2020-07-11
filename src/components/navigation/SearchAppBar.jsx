@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -31,9 +32,11 @@ export default function SearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography className={classes.title} variant='h6' noWrap>
-            Notes App
+            <Link to='/'>Notes App</Link>
           </Typography>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

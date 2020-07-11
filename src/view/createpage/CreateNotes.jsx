@@ -1,9 +1,11 @@
 import React from 'react';
 import DocEditor from '../../components/ckeditor/DocEditor';
 import { useFormContext } from '../../context/Form.state.jsx';
+import TitleInput from '../../components/inputs/TitleInput.jsx';
+import DefaultBtn from '../../components/buttons/DefaultBtn';
 
 import styles from './CreateNotes.module.css';
-import TitleInput from '../../components/inputs/TitleInput.jsx';
+import classes from './CreateNotes.module.css';
 
 const Temp = () => {
   const formContext = useFormContext();
@@ -12,11 +14,15 @@ const Temp = () => {
   return (
     <div className={styles.container}>
       <form className={styles['editor']}>
-        <div className={styles['input-space']}>
+        <div className={styles.myb}>
           <TitleInput />
         </div>
 
         <DocEditor />
+
+        <div className={styles.myt}>
+          <DefaultBtn text='Submit' />
+        </div>
       </form>
     </div>
   );

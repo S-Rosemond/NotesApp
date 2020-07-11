@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PenBtn from './../../components/buttons/PenBtn';
+import NotesListView from '../../components/noteslist/NotesListView';
 
 const HomePage = () => {
   return (
@@ -8,13 +8,8 @@ const HomePage = () => {
       {/* List notes from form context component here,
         pen btn may need to be absolute check mobile first
        */}
-
-      {/* link with component not working atm (todo) */}
-      <Link to='/create' component={PenBtn}></Link>
-
-      <Link to='/create'>
-        <PenBtn />
-      </Link>
+      <NotesListView />
+      <PenBtn href='/create' />
     </div>
   );
 };
