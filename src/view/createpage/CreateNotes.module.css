@@ -1,3 +1,14 @@
+.container {
+  width: calc(100vw - 50px);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: calc(100vw - 100px);
+  }
+}
+
 .editor {
   margin: 0 auto;
   max-width: 700px;
@@ -15,7 +26,7 @@
 
 /* This works as alt since targeting .ck-editor__editable_inline doesn't work */
 div[role='textbox'] {
-  min-height: 100px !important;
+  min-height: 200px !important;
 }
 .myb {
   margin-bottom: 1.5em;

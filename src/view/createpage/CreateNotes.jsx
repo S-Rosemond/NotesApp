@@ -5,15 +5,14 @@ import TitleInput from '../../components/inputs/TitleInput.jsx';
 import DefaultBtn from '../../components/buttons/DefaultBtn';
 
 import styles from './CreateNotes.module.css';
-import classes from './CreateNotes.module.css';
 
 const Temp = () => {
   const formContext = useFormContext();
-  const { notes } = formContext;
+  const { addNote } = formContext;
 
   return (
     <div className={styles.container}>
-      <form className={styles['editor']}>
+      <form className={styles['editor']} onSubmit={addNote}>
         <div className={styles.myb}>
           <TitleInput />
         </div>
