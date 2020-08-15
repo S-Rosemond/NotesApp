@@ -23,7 +23,8 @@ const FormState = (props) => {
     dispatch({ type: CKE_SET_ENTRY, payload: data });
 
   const addNote = () => {
-    let noteId = 'temp-text-for-id generator';
+    const noteId = uuid();
+    console.log(noteId, 'ran');
 
     state.entry.id = noteId;
 

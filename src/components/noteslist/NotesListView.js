@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 import { useFormContext } from './../../context/Form.state';
 
+import styles from './NotesListView.module.css';
+import NotesDisplay from './NotesDisplay';
+
 const NotesListView = () => {
   const formContext = useFormContext();
   const { notes } = formContext;
@@ -18,10 +21,7 @@ const NotesListView = () => {
       })}
     </Fragment>
   ) : (
-    <Fragment>
-      <p>No Notes Found</p>
-      {/* Add notes btn component */}
-    </Fragment>
+    <NotesDisplay element={{ title: 'Title', date: '08/15/2020' }} />
   );
 };
 
