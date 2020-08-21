@@ -5,7 +5,12 @@ import FormReducer from './Form.reducer';
 // or stick with local storage: sm scale app
 import { default as uuid } from 'uuid';
 
-import { SET_ENTRY, ADD_NOTES, CKE_SET_ENTRY } from './Form.types.js';
+import {
+  SET_ENTRY,
+  ADD_NOTES,
+  CKE_SET_ENTRY,
+  CLEAR_ENTRY,
+} from './Form.types.js';
 
 const FormState = (props) => {
   const initialState = {
@@ -24,11 +29,17 @@ const FormState = (props) => {
 
   const addNote = () => {
     const noteId = uuid();
-    console.log(noteId, 'ran');
-
     state.entry.id = noteId;
 
+    if (!state.entry.Title || state.entry.Title.trim() === '') {
+      const today = new Date().toDateString();
+
+      state.entry.Title = today;
+    }
+
     dispatch({ type: ADD_NOTES, payload: state.entry });
+    dispatch({ type: CLEAR_ENTRY });
+    console.log('STATE', state, 'entry', state.entry);
   };
 
   const updateNote = (id, body) => {
@@ -51,6 +62,7 @@ const FormState = (props) => {
         state,
         notes: state.notes,
         entry: state.entry,
+        createPage: state.createPage,
         createEntry,
         ckeCreateEntry,
         addNote,

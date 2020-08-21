@@ -7,7 +7,9 @@ const DefaultBtn = ({
   text = 'Button',
   size = 'medium',
   fullWidth = true,
-  onClick,
+  handleClick,
+  disable = false,
+  type = 'button',
 }) => {
   return (
     <Fragment>
@@ -16,7 +18,9 @@ const DefaultBtn = ({
         color={color}
         size={size}
         fullWidth={fullWidth}
-        onClick={onClick}
+        onClick={handleClick}
+        disabled={disable}
+        type={type}
       >
         {text}
       </Button>

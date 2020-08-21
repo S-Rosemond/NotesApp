@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import mainTheme from '../theme/main.theme';
-import SearchAppBar from '../components/navigation/SearchAppBar';
+import SearchAppBar from '../components/navigation/SearchAppBar.jsx';
 import FormState from '../context/Form.state.jsx';
 import { CreateNotePage, HomePage } from '../view/index';
 

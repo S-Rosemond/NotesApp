@@ -7,7 +7,7 @@ import {
 } from './Form.types';
 
 export default function FormReducer(state, { type, payload }) {
-  console.log('payload', payload);
+  console.log('payload', payload, 'type', type);
   switch (type) {
     case CKE_SET_ENTRY:
       return { ...state, entry: Object.assign(state.entry, { body: payload }) };
@@ -19,8 +19,7 @@ export default function FormReducer(state, { type, payload }) {
     case CLEAR_ENTRY:
       return { ...state, entry: {} };
     case ADD_NOTES:
-      state.notes.push(payload);
-      return { ...state };
+      return { ...state, notes: [...state.notes, payload] };
     case CLEAR_NOTES:
       return { ...state, notes: [] };
     default:

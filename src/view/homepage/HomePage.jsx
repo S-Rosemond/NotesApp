@@ -1,6 +1,6 @@
 import React from 'react';
 import PenBtn from './../../components/buttons/PenBtn';
-import NotesListView from '../../components/noteslist/NotesListView';
+import NotesListHomeView from '../../components/noteslist/NotesListHomeView';
 
 const HomePage = () => {
   return (
@@ -8,7 +8,7 @@ const HomePage = () => {
       {/* List notes from form context component here,
         pen btn may need to be absolute check mobile first
        */}
-      <NotesListView />
+      <NotesListHomeView />
       <PenBtn href='/create' />
     </div>
   );

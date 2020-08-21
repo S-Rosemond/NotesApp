@@ -9,14 +9,14 @@ import styles from './CreateNotes.module.css';
 
 const Temp = () => {
   const formContext = useFormContext();
-  const { addNote, createEntry, notes } = formContext;
+  const { addNote, notes, entry } = formContext;
 
   const history = useHistory();
-  console.log(notes);
+  console.log(notes, entry);
 
   const handleOnsubmit = (params) => {
     //
-
+    console.log('called');
     history.push('/');
   };
   return (
@@ -29,7 +29,12 @@ const Temp = () => {
         <DocEditor />
 
         <div className={styles.myt}>
-          <DefaultBtn text='Submit' onClick={addNote} />
+          <DefaultBtn
+            text='Submit'
+            handleClick={addNote}
+            disable={entry.body ? false : true}
+            type='submit'
+          />
         </div>
       </form>
     </div>

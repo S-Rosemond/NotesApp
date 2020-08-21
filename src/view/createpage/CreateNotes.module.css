@@ -1,3 +1,9 @@
+/* Alt is: max-width: x value, width: x(percent) : 
+.container {
+  max-width: 700px;
+width: 90%
+} */
+
 .container {
   width: calc(100vw - 50px);
   margin: 0 auto;
@@ -12,16 +18,6 @@
 .editor {
   margin: 0 auto;
   max-width: 700px;
-}
-
-/* correct but maybe not enough specificity to overwrite default. Look for alt to edit ckeditor */
-.editor > .ck > .ck.ck-editor__editable_inline {
-  min-height: 300px !important;
-}
-/* correct but maybe not enough specificity to overwrite default. Look for alt to edit ckeditor */
-.editor > .ck > .ck > .ck-editor__editable_inline,
-.editor > .ck > .ck > .ck-editor__editable_inline:focus {
-  min-height: 300px !important;
 }
 
 /* This works as alt since targeting .ck-editor__editable_inline doesn't work */

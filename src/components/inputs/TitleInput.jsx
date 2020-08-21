@@ -16,7 +16,6 @@ const TitleInput = () => {
         className={styles.input_bar}
         onChange={createEntry}
       />
-      {console.log(entry)}
     </div>
   );
 };
