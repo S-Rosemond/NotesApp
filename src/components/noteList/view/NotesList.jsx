@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import { useFormContext } from '../../context/Form.state.jsx';
+import { useFormContext } from '../../../context/Form.state.jsx';
 
-import styles from './NotesListHomeView.module.css';
-import NotesDisplay from './NotesDisplay.jsx';
+import styles from './NotesList.module.css';
+import NotesAppTable from './TableHeaders/TableHeader.jsx';
 
 const NotesListHomeView = () => {
   const formContext = useFormContext();
@@ -13,7 +13,7 @@ const NotesListHomeView = () => {
       <h5>No notes found</h5>
     </Fragment>
   ) : (
-    <NotesDisplay />
+    <NotesAppTable />
   );
 };
 

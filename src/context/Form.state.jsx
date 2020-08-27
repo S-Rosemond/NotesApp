@@ -10,6 +10,7 @@ import {
   ADD_NOTES,
   CKE_SET_ENTRY,
   CLEAR_ENTRY,
+  SET_CREATE_PAGE,
 } from './Form.types.js';
 
 const FormState = (props) => {
@@ -31,10 +32,12 @@ const FormState = (props) => {
     const noteId = uuid();
     state.entry.id = noteId;
 
-    if (!state.entry.Title || state.entry.Title.trim() === '') {
-      const today = new Date().toDateString();
-
-      state.entry.Title = today;
+    if (!state.entry.title || state.entry.title.trim() === '') {
+      let date = new Date();
+      const title = date.toDateString();
+      date = date.toLocaleDateString();
+      state.entry.title = title;
+      state.entry.date = date;
     }
 
     dispatch({ type: ADD_NOTES, payload: state.entry });
@@ -56,6 +59,10 @@ const FormState = (props) => {
     // localStorage then dispatch
   };
 
+  const setCreatePage = () => {
+    dispatch({ type: SET_CREATE_PAGE });
+  };
+
   return (
     <FormContext.Provider
       value={{
@@ -68,6 +75,7 @@ const FormState = (props) => {
         addNote,
         updateNote,
         deleteNote,
+        setCreatePage,
       }}
     >
       {props.children}

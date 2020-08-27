@@ -4,6 +4,7 @@ import {
   CLEAR_ENTRY,
   CLEAR_NOTES,
   CKE_SET_ENTRY,
+  SET_CREATE_PAGE,
 } from './Form.types';
 
 export default function FormReducer(state, { type, payload }) {
@@ -22,6 +23,8 @@ export default function FormReducer(state, { type, payload }) {
       return { ...state, notes: [...state.notes, payload] };
     case CLEAR_NOTES:
       return { ...state, notes: [] };
+    case SET_CREATE_PAGE:
+      return { ...state, createPage: !state.createPage };
     default:
       return state;
   }

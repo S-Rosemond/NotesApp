@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import DocEditor from '../../components/ckeditor/DocEditor';
 import { useFormContext } from '../../context/Form.state.jsx';
 import { useHistory } from 'react-router-dom';
-import TitleInput from '../../components/inputs/TitleInput.jsx';
+import TitleInput from '../../components/Inputs/TitleInput.jsx';
 import DefaultBtn from '../../components/buttons/DefaultBtn';
 
 import styles from './CreateNotes.module.css';
+import { useEffect } from 'react';
 
 const Temp = () => {
   const formContext = useFormContext();
-  const { addNote, notes, entry } = formContext;
+  const { addNote, notes, entry, setCreatePage } = formContext;
+
+  const editorRef = useRef();
 
   const history = useHistory();
   console.log(notes, entry);
+
+  useEffect(() => {
+    setCreatePage();
+
+    return () => {
+      setCreatePage();
+    };
+  }, []);
 
   const handleOnsubmit = (params) => {
     //
@@ -26,7 +37,7 @@ const Temp = () => {
           <TitleInput />
         </div>
 
-        <DocEditor />
+        <DocEditor id={editorRef} />
 
         <div className={styles.myt}>
           <DefaultBtn

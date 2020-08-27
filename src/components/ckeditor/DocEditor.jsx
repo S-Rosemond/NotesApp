@@ -4,9 +4,10 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useFormContext } from '../../context/Form.state.jsx';
 
+// prevents script & other tags in editor: auto
 const DocEditor = () => {
   const formContext = useFormContext();
-  const { ckeCreateEntry, entry } = formContext;
+  const { ckeCreateEntry } = formContext;
 
   return (
     <CKEditor
@@ -28,9 +29,6 @@ const DocEditor = () => {
           'undo',
           'redo',
         ],
-      }}
-      onInit={(editor) => {
-        console.log('Loaded');
       }}
       onChange={(event, editor) => {
         const data = editor.getData();

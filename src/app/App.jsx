@@ -5,6 +5,7 @@ import mainTheme from '../theme/main.theme';
 import SearchAppBar from '../components/navigation/SearchAppBar.jsx';
 import FormState from '../context/Form.state.jsx';
 import { CreateNotePage, HomePage } from '../view/index';
+import Notes from '../components/notes/Notes';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Switch>
               <Route path='/' exact component={HomePage} />
               <Route path='/create' exact component={CreateNotePage} />
+              <Route path='/:id' exact component={Notes} />
             </Switch>
           </Router>
         </FormState>

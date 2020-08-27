@@ -8,18 +8,22 @@ import InputBase from '@material-ui/core/InputBase';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles } from '@material-ui/core/styles';
-import navTheme from './../../theme/templates/navigation';
-import { useFormContext } from './../../context/Form.state';
+import navTheme from '../../theme/templates/navigation';
+import { useFormContext } from '../../context/Form.state';
+import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const useStyles = makeStyles(navTheme);
 
 export default function SearchAppBar() {
   const classes = useStyles();
-  const formContext = useFormContext();
-  const { createPage } = formContext;
-  // (todo) change Icon button Menu to back arrow if true: createPage
-  // link back arrow to home
+  const { createPage } = useFormContext();
+  // (todo) add functionality to back arrow
+  // remove/ hide Searchbar when within createpage
+  // try diff fonts
+  // consider moving back arrow elsewhere
 
+  console.log(createPage);
   return (
     <div className={classes.root}>
       <AppBar position='static'>
@@ -30,7 +34,11 @@ export default function SearchAppBar() {
             color='inherit'
             aria-label='open drawer'
           >
-            <MenuIcon />
+            {createPage ? (
+              <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+            ) : (
+              <MenuIcon />
+            )}
           </IconButton>
 
           <Typography className={classes.title} variant='h6' noWrap>

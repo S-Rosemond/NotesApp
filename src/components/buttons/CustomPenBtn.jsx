@@ -6,10 +6,10 @@ import { customBtnTheme } from '../../theme/templates/customBtn';
 
 const useStyles = makeStyles(customBtnTheme);
 
-// Pen button causes reload : empty context info, need to fix;
-// remove later, this cause reload of browser, research first.
-// Keep as example for later ref
-const PenBtn = ({ href }) => {
+// This works with react-router-dom Link as a component
+// Mui button has href which make this moot
+// Leaving this here as an example in case similar issue
+export default React.forwardRef((props, ref) => {
   const classes = useStyles();
   return (
     <Fragment>
@@ -18,12 +18,11 @@ const PenBtn = ({ href }) => {
         color='secondary'
         className={classes.button}
         startIcon={<CreateIcon />}
-        href={href}
+        ref={ref}
+        {...props}
       >
         Create
       </Button>
     </Fragment>
   );
-};
-
-export default PenBtn;
+});
