@@ -15,6 +15,7 @@ export const customBtnTheme = (theme) => ({
     position: 'absolute',
     bottom: theme.spacing(7),
     right: theme.spacing(7),
+    zIndex: 1000,
   },
 });
 

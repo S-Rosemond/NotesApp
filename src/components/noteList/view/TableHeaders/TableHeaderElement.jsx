@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 
-import StyledTableCell from './StyleTableCell/StyledTableCell';
+import StyledTableCell from '../StyleTableCell/StyledTableCell';
 
 const TableHeaderElement = () => {
   const [wSize, setSize] = useState(window.innerWidth);

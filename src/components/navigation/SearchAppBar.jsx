@@ -10,8 +10,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles } from '@material-ui/core/styles';
 import navTheme from '../../theme/templates/navigation';
 import { useFormContext } from '../../context/Form.state';
-import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import IconBtn from './../buttons/IconBtn';
 
 const useStyles = makeStyles(navTheme);
 
@@ -35,7 +35,7 @@ export default function SearchAppBar() {
             aria-label='open drawer'
           >
             {createPage ? (
-              <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+              <IconBtn to='/' Component={KeyboardBackspaceIcon} />
             ) : (
               <MenuIcon />
             )}
@@ -45,19 +45,21 @@ export default function SearchAppBar() {
             <Link to='/'>Notes App</Link>
           </Typography>
 
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          {createPage ? null : (
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder='Search…'
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
             </div>
-            <InputBase
-              placeholder='Search…'
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+          )}
         </Toolbar>
       </AppBar>
     </div>
