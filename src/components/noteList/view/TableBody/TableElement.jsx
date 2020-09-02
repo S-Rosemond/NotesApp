@@ -1,6 +1,4 @@
 import React, { Fragment } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { useFormContext } from '../../../../context/Form.state';
 import DefaultBtn from '../../../buttons/DefaultBtn';
 import StyledTableCell from '../StyleTableCell/StyledTableCell';

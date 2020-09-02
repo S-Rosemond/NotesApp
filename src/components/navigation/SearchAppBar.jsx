@@ -17,11 +17,16 @@ const useStyles = makeStyles(navTheme);
 
 export default function SearchAppBar() {
   const classes = useStyles();
-  const { createPage } = useFormContext();
+  const { createPage, notes } = useFormContext();
   // (todo) add functionality to back arrow
   // remove/ hide Searchbar when within createpage
   // try diff fonts
   // consider moving back arrow elsewhere
+
+  const handleChange = () => {
+    // todo  handleChange : onChange: goes on InputBase
+    // logic, plus edit/update, delete btn and edit, landing page then done
+  };
 
   console.log(createPage);
   return (

@@ -9,13 +9,12 @@ import {
 import { useFormContext } from './../../../../context/Form.state';
 import TableHeaderElement from '../TableHeaders/TableHeaderElement';
 import NotesTableBody from '../TableBody/NotesTableBody';
-
-import useStyles from '../TableHeaders/styles';
-import TableElement from '../TableBody/TableElement';
 import EmptyNotes from '../EmptyNoteArray/EmptyNotes';
 
+import useStyles from '../TableHeaders/styles';
+
 export default function () {
-  const { notes } = useFormContext();
+  const { notes, filteredNotes } = useFormContext();
   const classes = useStyles();
   return (
     <Fragment>
@@ -34,3 +33,7 @@ export default function () {
     </Fragment>
   );
 }
+
+// solution
+// {filteredNotes.length ? <FilterdNotes /> :
+//   !!notes.length ? <NotesTableBody /> : <EmptyNotes />}

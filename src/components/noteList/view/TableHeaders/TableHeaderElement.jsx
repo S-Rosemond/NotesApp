@@ -19,20 +19,8 @@ const TableHeaderElement = () => {
     <Fragment>
       <StyledTableCell align='center'>Date</StyledTableCell>
       <StyledTableCell align='center'>Title</StyledTableCell>
-      <StyledTableCell align='center'>
-        {wSize < 700 ? (
-          <FontAwesomeIcon color='#279f9f' size='lg' icon={faEdit} />
-        ) : (
-          'Update'
-        )}
-      </StyledTableCell>
-      <StyledTableCell align='center'>
-        {wSize < 700 ? (
-          <FontAwesomeIcon color='#279f9f' size='lg' icon={faTrashAlt} />
-        ) : (
-          'Delete'
-        )}
-      </StyledTableCell>
+      <StyledTableCell align='center'>Update</StyledTableCell>
+      <StyledTableCell align='center'>Delete</StyledTableCell>
     </Fragment>
   );
 };

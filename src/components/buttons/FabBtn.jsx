@@ -3,7 +3,6 @@ import { Fab } from '@material-ui/core';
 import { Add as AddIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import { customBtnTheme } from './../../theme/templates/customBtn';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles(customBtnTheme);
 
