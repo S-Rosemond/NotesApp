@@ -12,6 +12,7 @@ import NotesTableBody from '../TableBody/NotesTableBody';
 
 import useStyles from '../TableHeaders/styles';
 import TableElement from '../TableBody/TableElement';
+import EmptyNotes from '../EmptyNoteArray/EmptyNotes';
 
 export default function () {
   const { notes } = useFormContext();
@@ -25,12 +26,9 @@ export default function () {
               <TableHeaderElement />
             </TableRow>
           </TableHead>
-
-          {!!notes.length ? (
-            <NotesTableBody />
-          ) : (
-            <TableElement title='No Notes Found' id={0} date={0} />
-          )}
+          <TableBody>
+            {!!notes.length ? <NotesTableBody /> : <EmptyNotes />}
+          </TableBody>
         </Table>
       </TableContainer>
     </Fragment>

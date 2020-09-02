@@ -31,14 +31,17 @@ const FormState = (props) => {
   const addNote = () => {
     const noteId = uuid();
     state.entry.id = noteId;
+    // add local storage func
+    let date = new Date();
 
     if (!state.entry.title || state.entry.title.trim() === '') {
-      let date = new Date();
       const title = date.toDateString();
-      date = date.toLocaleDateString();
+
       state.entry.title = title;
-      state.entry.date = date;
     }
+
+    date = date.toLocaleDateString();
+    state.entry.date = date;
 
     dispatch({ type: ADD_NOTES, payload: state.entry });
     dispatch({ type: CLEAR_ENTRY });

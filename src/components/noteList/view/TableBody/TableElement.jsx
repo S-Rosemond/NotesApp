@@ -17,10 +17,10 @@ const TableElement = ({ id, title, date }) => {
       <StyledTableCell align='center'>{date}</StyledTableCell>
       <StyledTableCell align='center'>{title}</StyledTableCell>
       <StyledTableCell align='center'>
-        <DefaultBtn />
+        <DefaultBtn fullWidth={false} />
       </StyledTableCell>
       <StyledTableCell align='center'>
-        <DefaultBtn onClick={handleDelete.bind(null, id)} />
+        <DefaultBtn fullWidth={false} onClick={handleDelete.bind(null, id)} />
       </StyledTableCell>
     </Fragment>
   );

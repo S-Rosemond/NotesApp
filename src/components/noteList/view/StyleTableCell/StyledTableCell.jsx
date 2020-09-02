@@ -8,7 +8,7 @@ const styles = {
     color: '#279f9f',
   },
   body: {
-    fontSize: 500,
+    fontSize: 14,
   },
 };
 

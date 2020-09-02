@@ -16,6 +16,10 @@ export const customBtnTheme = (theme) => ({
     bottom: theme.spacing(7),
     right: theme.spacing(7),
     zIndex: 1000,
+
+    '&:hover': {
+      scale: '150%',
+    },
   },
 });
 
