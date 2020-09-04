@@ -1,22 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import MenuIcon from '@material-ui/icons/Menu';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/core/styles';
-import navTheme from '../../theme/templates/navigation';
-import { useFormContext } from '../../context/Form.state';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-import IconBtn from './../buttons/IconBtn';
-
-const useStyles = makeStyles(navTheme);
+import { useFormContext } from '../../context/Form.state';
+import { IconBtn } from '../index';
+import { useNavStyles } from './../../theme/useThemes/useThemes';
 
 export default function SearchAppBar() {
-  const classes = useStyles();
+  const classes = useNavStyles();
   const { createPage, notes } = useFormContext();
   // (todo) add functionality to back arrow
   // remove/ hide Searchbar when within createpage
@@ -42,7 +40,7 @@ export default function SearchAppBar() {
             {createPage ? (
               <IconBtn to='/' Component={KeyboardBackspaceIcon} />
             ) : (
-              <MenuIcon />
+              <div className={classes.empty} />
             )}
           </IconButton>
 

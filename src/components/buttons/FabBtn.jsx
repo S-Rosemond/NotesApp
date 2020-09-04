@@ -7,14 +7,14 @@ import { customBtnTheme } from './../../theme/templates/customBtn';
 const useStyles = makeStyles(customBtnTheme);
 
 export default function (props) {
-  const { label, color, size } = props;
+  const { label, color, size, styling } = props;
 
   const classes = useStyles();
 
   return (
     <Fab
       aria-label={label || 'Add'}
-      className={classes.fab}
+      className={classes[styling || 'fab']}
       color={color || 'secondary'}
       size={size || 'large'}
       {...props}

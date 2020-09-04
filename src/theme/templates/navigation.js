@@ -51,6 +51,18 @@ const navTheme = (theme) => ({
       },
     },
   },
+  empty: {
+    width: '1em',
+  },
+  footer: {
+    width: '100%',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 0,
+  },
+  toolBar: {
+    justifyContent: 'space-evenly',
+  },
 });
 
 export default navTheme;
