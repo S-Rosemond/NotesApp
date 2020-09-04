@@ -10,7 +10,7 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import { useFormContext } from '../../context/Form.state';
-import { IconBtn } from '../index';
+import { IconLinkBtn } from '../index';
 import { useNavStyles } from './../../theme/useThemes/useThemes';
 
 export default function SearchAppBar() {
@@ -26,23 +26,24 @@ export default function SearchAppBar() {
     // logic, plus edit/update, delete btn and edit, landing page then done
   };
 
-  console.log(createPage);
   return (
     <div className={classes.root}>
       <AppBar position='static'>
         <Toolbar>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='open drawer'
-          >
-            {createPage ? (
-              <IconBtn to='/' Component={KeyboardBackspaceIcon} />
-            ) : (
-              <div className={classes.empty} />
-            )}
-          </IconButton>
+          {createPage && (
+            <IconButton
+              edge='start'
+              className={classes.menuButton}
+              color='inherit'
+              aria-label='Go back'
+            >
+              <IconLinkBtn
+                to='/'
+                tooltip='Go back'
+                Component={KeyboardBackspaceIcon}
+              />
+            </IconButton>
+          )}
 
           <Typography className={classes.title} variant='h6' noWrap>
             <Link to='/'>Notes App</Link>

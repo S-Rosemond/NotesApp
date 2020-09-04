@@ -22,7 +22,7 @@ const HomePage = () => {
         <NotesList />
       </div>
       {windowSize > 500 ? (
-        <div className={classes.fabPosition}>
+        <div className={classes.fabPosition} title='Create a note'>
           <FabBtn to='create' component={Link} />
         </div>
       ) : (

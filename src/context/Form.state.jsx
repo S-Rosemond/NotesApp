@@ -48,6 +48,10 @@ const FormState = (props) => {
     console.log('STATE', state, 'entry', state.entry);
   };
 
+  // const handleClick = () => {
+  //   state.notes.slice()
+  // }
+
   const updateNote = (id, body) => {
     let update = state.notes.find((el) => el._id === id);
 
