@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import DocEditor from '../../components/ckeditor/DocEditor';
 import { useFormContext } from '../../context/Form.state.jsx';
 import { useHistory } from 'react-router-dom';
@@ -6,7 +6,6 @@ import TitleInput from '../../components/Inputs/TitleInput.jsx';
 import DefaultBtn from '../../components/buttons/DefaultBtn';
 
 import styles from './CreateNotes.module.css';
-import { useEffect } from 'react';
 
 const Temp = () => {
   const formContext = useFormContext();
@@ -25,9 +24,7 @@ const Temp = () => {
     };
   }, []);
 
-  const handleOnsubmit = (params) => {
-    //
-    console.log('called');
+  const handleOnsubmit = () => {
     history.push('/');
   };
   return (

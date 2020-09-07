@@ -4,10 +4,10 @@ import DefaultBtn from '../../../buttons/DefaultBtn';
 import StyledTableCell from '../StyleTableCell/StyledTableCell';
 
 const TableElement = ({ id, title, date }) => {
-  const { notes } = useFormContext();
+  const { notes, deleteNote } = useFormContext();
 
   const handleDelete = (id) => {
-    notes.filter((el) => el.id !== id);
+    deleteNote(id);
   };
 
   return (
@@ -15,10 +15,14 @@ const TableElement = ({ id, title, date }) => {
       <StyledTableCell align='center'>{date}</StyledTableCell>
       <StyledTableCell align='center'>{title}</StyledTableCell>
       <StyledTableCell align='center'>
-        <DefaultBtn fullWidth={false} />
+        <DefaultBtn text='Edit' fullWidth={false} />
       </StyledTableCell>
       <StyledTableCell align='center'>
-        <DefaultBtn fullWidth={false} onClick={handleDelete.bind(null, id)} />
+        <DefaultBtn
+          text='Delete'
+          fullWidth={false}
+          handleClick={handleDelete.bind(null, id)}
+        />
       </StyledTableCell>
     </Fragment>
   );

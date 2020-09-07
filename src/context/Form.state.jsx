@@ -11,12 +11,13 @@ import {
   CKE_SET_ENTRY,
   CLEAR_ENTRY,
   SET_CREATE_PAGE,
+  NOTE_DELETED,
 } from './Form.types.js';
 
 const FormState = (props) => {
   const initialState = {
     entry: {},
-    notes: [],
+    notes: JSON.parse(localStorage.getItem('localNotes')) || [],
     createPage: false,
   };
 
@@ -53,17 +54,29 @@ const FormState = (props) => {
   // }
 
   const updateNote = (id, body) => {
-    let update = state.notes.find((el) => el._id === id);
+    let update = state.notes.find((el) => el.id === id);
 
     update = Object.assign(update, body);
+
+    // dispatch({type: NOTE_UPDATED, payload: update})
+    // setLocalStorage(update)
 
     // localStorage then dispatch
   };
 
-  const deleteNote = (id) => {
-    const update = state.notes.filter((el) => el._id !== id);
+  const setLocalStorage = (data, name = 'localNotes') => {
+    localStorage.setItem(name, data);
+  };
 
-    // localStorage then dispatch
+  const deleteNote = async (id) => {
+    const update = state.notes.filter((el) => el.id !== id);
+
+    Promise.all([
+      dispatch({ type: NOTE_DELETED, payload: update }),
+      localStorage.setItem('localNotes', JSON.stringify(update)),
+    ]);
+
+    console.log(state.notes);
   };
 
   const setCreatePage = () => {

@@ -5,7 +5,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useFormContext } from '../../context/Form.state.jsx';
 
 // prevents script & other tags in editor: auto
-const DocEditor = () => {
+const DocEditor = ({ editData }) => {
   const formContext = useFormContext();
   const { ckeCreateEntry } = formContext;
 
@@ -18,7 +18,6 @@ const DocEditor = () => {
           '|',
           'bold',
           'italic',
-          'link',
           'bulletedList',
           'numberedList',
           '|',
@@ -29,6 +28,9 @@ const DocEditor = () => {
           'undo',
           'redo',
         ],
+      }}
+      onInit={(editor) => {
+        if (editData) editor.setData(editData.body);
       }}
       onChange={(event, editor) => {
         const data = editor.getData();
