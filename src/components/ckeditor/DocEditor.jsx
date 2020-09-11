@@ -1,5 +1,6 @@
 import React from 'react';
 import CKEditor from '@ckeditor/ckeditor5-react';
+import HTMLReactParser from 'html-react-parser';
 
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useFormContext } from '../../context/FormContext/FormState';
@@ -33,11 +34,13 @@ const DocEditor = ({ editData }) => {
         if (editData) editor.setData(editData.body);
       }}
       onChange={(event, editor) => {
-        const data = editor.getData();
-        ckeCreateEntry(data.replace(/<p>|<\/p>/gm, '').trim());
+        const data = HTMLReactParser(editor.getData());
+        ckeCreateEntry(data);
       }}
     />
   );
 };
 
 export default DocEditor;
+
+//.replace(/<p>|<\/p>/gm, '').trim()

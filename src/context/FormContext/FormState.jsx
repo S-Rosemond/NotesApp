@@ -42,7 +42,7 @@ const FormState = (props) => {
 
       state.entry.title = title;
     }
-
+    state.entry.createdAt = date;
     date = date.toLocaleDateString();
     state.entry.date = date;
 
@@ -67,6 +67,7 @@ const FormState = (props) => {
   };
 
   const setLocalStorage = (data, name = 'localNotes') => {
+    // consider adding a prefix
     localStorage.setItem(name, data);
   };
 
