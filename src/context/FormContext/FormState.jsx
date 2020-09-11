@@ -1,6 +1,6 @@
 import React, { useReducer, useContext } from 'react';
-import FormContext from './Form.context.jsx';
-import FormReducer from './Form.reducer';
+import FormContext from './FormContext.jsx';
+import FormReducer from './FormReducer';
 // not sure if I want to use database yet
 // or stick with local storage: sm scale app
 import { default as uuid } from 'uuid';
@@ -12,13 +12,15 @@ import {
   CLEAR_ENTRY,
   SET_CREATE_PAGE,
   NOTE_DELETED,
-} from './Form.types.js';
+  SET_MODAL_BODY,
+} from './Form.types';
 
 const FormState = (props) => {
   const initialState = {
     entry: {},
     notes: JSON.parse(localStorage.getItem('localNotes')) || [],
     createPage: false,
+    modalBody: null,
   };
 
   const [state, dispatch] = useReducer(FormReducer, initialState);
@@ -83,6 +85,13 @@ const FormState = (props) => {
     dispatch({ type: SET_CREATE_PAGE });
   };
 
+  const getModalBody = (id) => {
+    const modalBody = state.notes.find((el) => el.id === id);
+    console.log(modalBody);
+
+    dispatch({ type: SET_MODAL_BODY, payload: modalBody });
+  };
+
   return (
     <FormContext.Provider
       value={{
@@ -90,12 +99,14 @@ const FormState = (props) => {
         notes: state.notes,
         entry: state.entry,
         createPage: state.createPage,
+        modalBody: state.modalBody,
         createEntry,
         ckeCreateEntry,
         addNote,
         updateNote,
         deleteNote,
         setCreatePage,
+        getModalBody,
       }}
     >
       {props.children}

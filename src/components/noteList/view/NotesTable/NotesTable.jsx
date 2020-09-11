@@ -6,12 +6,12 @@ import {
   TableRow,
   TableBody,
 } from '@material-ui/core';
-import { useFormContext } from './../../../../context/Form.state';
+import { useFormContext } from '../../../../context/FormContext/FormState';
 import TableHeaderElement from '../TableHeaders/TableHeaderElement';
 import NotesTableBody from '../TableBody/NotesTableBody';
 import EmptyNotes from '../EmptyNoteArray/EmptyNotes';
 
-import useStyles from '../TableHeaders/styles';
+import useStyles from '../../../../theme/templates/tables';
 
 export default function () {
   const { notes, filteredNotes } = useFormContext();

@@ -6,6 +6,7 @@ import {
   CKE_SET_ENTRY,
   SET_CREATE_PAGE,
   NOTE_DELETED,
+  SET_MODAL_BODY,
 } from './Form.types';
 
 export default function FormReducer(state, { type, payload }) {
@@ -28,6 +29,8 @@ export default function FormReducer(state, { type, payload }) {
       return { ...state, createPage: !state.createPage };
     case NOTE_DELETED:
       return { ...state, notes: payload };
+    case SET_MODAL_BODY:
+      return { ...state, modalBody: payload };
     default:
       return state;
   }

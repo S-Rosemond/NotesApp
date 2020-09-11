@@ -29,6 +29,16 @@ export const customBtnTheme = (theme) => ({
     right: theme.spacing(7),
     zIndex: 1000,
   },
+  flexChangeLayout: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginTop: '20px',
+    paddingRight: '40px',
+  },
+  spaceLayoutBtn: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+  },
 });
 
 export default defaultBtnTheme;

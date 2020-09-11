@@ -8,6 +8,7 @@ const EmptyNotes = () => {
       <StyledTableCell align='center'> No Notes Found</StyledTableCell>
       <StyledTableCell align='center'>Unavailable</StyledTableCell>
       <StyledTableCell align='center'>Unavailable</StyledTableCell>
+      <StyledTableCell align='center'>Unavailable</StyledTableCell>
     </tr>
   );
 };
