@@ -38,6 +38,11 @@ export const customBtnTheme = (theme) => ({
   spaceLayoutBtn: {
     display: 'flex',
     justifyContent: 'space-evenly',
+    cursor: 'pointer',
+  },
+  iconClass: {
+    fontSize: '2rem !important',
+    width: '1.5em !important',
   },
 });
 

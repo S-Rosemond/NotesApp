@@ -5,17 +5,8 @@ import StyledTableCell from '../StyleTableCell/StyledTableCell';
 import { useModalContext } from '../../../../context/ModalContext/ModalState';
 
 const TableElement = ({ id, title, date }) => {
-  const { notes, deleteNote, getModalBody } = useFormContext();
-  const { handleOpen } = useModalContext();
-
-  const handleDelete = (id) => {
-    deleteNote(id);
-  };
-
-  const handleModal = (id) => {
-    getModalBody(id);
-    handleOpen();
-  };
+  const { notes, handleDelete, getModalBody } = useFormContext();
+  const { handleModal } = useModalContext();
 
   return (
     <Fragment>

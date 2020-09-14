@@ -8,24 +8,26 @@ import ModalStateProvider from '../context/ModalContext/ModalState.jsx';
 import { Notes, SearchAppBar } from '../components/index';
 import { CreateNotePage, HomePage } from '../view/index';
 import EditPage from './../view/editpage/EditPage';
+import NotesGrid from './../components/notesGrid/view/NotesGrid';
 
 const App = () => {
   return (
     <Fragment>
       <ThemeProvider theme={mainTheme}>
-        <ModalStateProvider>
-          <FormState>
+        <FormState>
+          <ModalStateProvider>
             <Router>
               <SearchAppBar />
               <Switch>
                 <Route path='/' exact component={HomePage} />
                 <Route path='/create' exact component={CreateNotePage} />
+                <Route path='/card' exact component={NotesGrid} />
                 <Route path='/edit' exact component={EditPage} />
                 <Route path='/:id' exact component={Notes} />
               </Switch>
             </Router>
-          </FormState>
-        </ModalStateProvider>
+          </ModalStateProvider>
+        </FormState>
       </ThemeProvider>
     </Fragment>
   );

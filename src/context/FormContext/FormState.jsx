@@ -93,6 +93,10 @@ const FormState = (props) => {
     dispatch({ type: SET_MODAL_BODY, payload: modalBody });
   };
 
+  const handleDelete = (id) => {
+    deleteNote(id);
+  };
+
   return (
     <FormContext.Provider
       value={{
@@ -108,6 +112,7 @@ const FormState = (props) => {
         deleteNote,
         setCreatePage,
         getModalBody,
+        handleDelete,
       }}
     >
       {props.children}
