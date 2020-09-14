@@ -8,3 +8,4 @@ export { default as NotesList } from './noteList/view/NotesList';
 export { default as SetLayout } from './buttons/LayoutBtn';
 export { default as NotesGrid } from './notesGrid/view/NotesGrid';
 export { default as DefaultCard } from './cards/DefaultCards';
+export { default as GridCard } from './cards/CustomGridCard';

@@ -7,43 +7,27 @@ import {
   Divider,
   Typography,
 } from '@material-ui/core';
+import HTMLReactParser from 'html-react-parser';
 import DefaultBtn from './../buttons/DefaultBtn';
-import { makeStyles } from '@material-ui/core/styles';
 import { useCardTheme } from '../../theme/useThemes/useThemes';
-
-const useStyles = makeStyles((theme) => ({
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-}));
 
 const DefaultCards = ({ cards, buttons }) => {
   const classes = useCardTheme();
 
   return (
-    <Card className={classes.root}>
-      {cards.map((card) => (
-        <Fragment>
+    <Fragment>
+      {cards.map((card, idx) => (
+        <Card key={idx} className={classes.root}>
           <CardHeader title={card.title} className={classes.header} />
           <CardContent>
-            <Typography noWrap>{card.body}</Typography>
+            <Typography noWrap>{HTMLReactParser(card.body)}</Typography>
           </CardContent>
           <Divider />
           <CardActions>
             {buttons.map((button) => {
               return (
                 <DefaultBtn
+                  key={card.id + button.id}
                   variant={button.variant || 'text'}
                   color={button.color}
                   text={button.text}
@@ -56,9 +40,9 @@ const DefaultCards = ({ cards, buttons }) => {
               );
             })}
           </CardActions>
-        </Fragment>
+        </Card>
       ))}
-    </Card>
+    </Fragment>
   );
 };
 

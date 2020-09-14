@@ -1,0 +1,5 @@
+.notes-grid {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: blue;
+}
