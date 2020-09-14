@@ -19,7 +19,11 @@ const CustomGridCard = ({ Wrapper, buttons, cards, attr }) => {
       {cards.map((card, idx) => (
         <Wrapper {...attr}>
           <Card key={idx} className={classes.root}>
-            <CardHeader title={card.title} className={classes.header} />
+            <CardHeader
+              disableTypography
+              title={<Typography noWrap>{card.title}</Typography>}
+              className={classes.header}
+            />
             <CardContent>
               <Typography noWrap>{HTMLReactParser(card.body)}</Typography>
             </CardContent>

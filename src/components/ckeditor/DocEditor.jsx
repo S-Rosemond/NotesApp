@@ -6,8 +6,7 @@ import { useFormContext } from '../../context/FormContext/FormState';
 
 // prevents script & other tags in editor: auto
 const DocEditor = ({ editData }) => {
-  const formContext = useFormContext();
-  const { ckeCreateEntry } = formContext;
+  const { ckeCreateEntry } = useFormContext();
 
   return (
     <CKEditor

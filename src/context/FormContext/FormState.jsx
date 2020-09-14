@@ -20,7 +20,7 @@ const FormState = (props) => {
     entry: {},
     notes: JSON.parse(localStorage.getItem('localNotes')) || [],
     createPage: false,
-    modalBody: null,
+    modalBody: '',
   };
 
   const [state, dispatch] = useReducer(FormReducer, initialState);

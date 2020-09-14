@@ -56,9 +56,9 @@ const navTheme = (theme) => ({
   },
   footer: {
     width: '100%',
-    justifyContent: 'center',
-    position: 'absolute',
+    position: 'fixed',
     bottom: 0,
+    top: 'auto',
   },
   toolBar: {
     justifyContent: 'space-evenly',

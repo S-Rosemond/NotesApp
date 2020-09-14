@@ -19,7 +19,7 @@ const TitleInput = ({ editData }) => {
       fullWidth
       onChange={handleOnChange}
       variant='filled'
-      value={state || null}
+      value={state || ''}
     />
   );
 };

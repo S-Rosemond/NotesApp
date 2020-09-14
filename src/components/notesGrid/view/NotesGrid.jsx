@@ -29,11 +29,10 @@ const NotesGrid = () => {
   ];
   const attr = {
     item: true,
-    xs: 6,
-    md: 2,
+    xs: 'auto',
   };
   return (
-    <Grid container spacing={4} style={{ marginTop: '15px' }}>
+    <Grid container spacing={2} style={{ marginTop: '15px' }}>
       <GridCard cards={notes} buttons={buttons} Wrapper={Grid} attr={attr} />
     </Grid>
   );

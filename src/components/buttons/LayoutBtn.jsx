@@ -14,9 +14,6 @@ const LayoutBtn = ({ changeLayout, currentLayout }) => {
     color: `${currentLayout === 'grid' ? 'var(--secondary)' : 'initial'}`,
   };
 
-  const changeLayoutGrid = () => changeLayout('grid');
-  const changeLayoutTable = () => changeLayout('table');
-
   return (
     <div className={classes.flexChangeLayout}>
       <div className={classes.spaceLayoutBtn}>
@@ -24,14 +21,14 @@ const LayoutBtn = ({ changeLayout, currentLayout }) => {
           tooltip='grid'
           Component={ViewModule}
           styles={gridActiveStyles}
-          handleClick={changeLayoutGrid}
+          handleClick={changeLayout.bind(null, 'grid')}
           iconClass={classes.iconClass}
         />
 
         <IconBtn
           styles={tableActiveStyles}
           tooltip='table'
-          handleClick={changeLayoutTable}
+          handleClick={changeLayout.bind(null, 'table')}
           Component={ViewList}
           iconClass={classes.iconClass}
         />
