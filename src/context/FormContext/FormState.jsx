@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer, useContext, useEffect } from 'react';
 import FormContext from './FormContext.jsx';
 import FormReducer from './FormReducer';
 // not sure if I want to use database yet
@@ -13,6 +13,7 @@ import {
   SET_CREATE_PAGE,
   NOTE_DELETED,
   SET_MODAL_BODY,
+  NOTE_UPDATED,
 } from './Form.types';
 
 const FormState = (props) => {
@@ -20,10 +21,16 @@ const FormState = (props) => {
     entry: {},
     notes: JSON.parse(localStorage.getItem('localNotes')) || [],
     createPage: false,
-    modalBody: '',
+    modalBody: {
+      body: '',
+    },
   };
 
   const [state, dispatch] = useReducer(FormReducer, initialState);
+
+  useEffect(() => {
+    setLocalStorage(state.notes);
+  }, [state.notes]);
 
   const createEntry = (e) =>
     dispatch({ type: SET_ENTRY, payload: { [e.target.name]: e.target.value } });
@@ -46,11 +53,13 @@ const FormState = (props) => {
     date = date.toLocaleDateString();
     state.entry.date = date;
 
-    dispatch({ type: ADD_NOTES, payload: state.entry });
-    dispatch({ type: CLEAR_ENTRY });
-    console.log('STATE', state, 'entry', state.entry);
+    Promise.all([
+      dispatch({ type: ADD_NOTES, payload: state.entry }),
+      dispatch({ type: CLEAR_ENTRY }),
+    ]);
   };
 
+  // filtered | search notes with pagination
   // const handleClick = () => {
   //   state.notes.slice()
   // }
@@ -60,26 +69,18 @@ const FormState = (props) => {
 
     update = Object.assign(update, body);
 
-    // dispatch({type: NOTE_UPDATED, payload: update})
-    // setLocalStorage(update)
-
-    // localStorage then dispatch
+    dispatch({ type: NOTE_UPDATED, payload: update });
   };
 
   const setLocalStorage = (data, name = 'localNotes') => {
     // consider adding a prefix
-    localStorage.setItem(name, data);
+    localStorage.setItem(name, JSON.stringify(data));
   };
 
-  const deleteNote = async (id) => {
+  const deleteNote = (id) => {
     const update = state.notes.filter((el) => el.id !== id);
 
-    Promise.all([
-      dispatch({ type: NOTE_DELETED, payload: update }),
-      localStorage.setItem('localNotes', JSON.stringify(update)),
-    ]);
-
-    console.log(state.notes);
+    dispatch({ type: NOTE_DELETED, payload: update });
   };
 
   const setCreatePage = () => {
@@ -88,7 +89,6 @@ const FormState = (props) => {
 
   const getModalBody = (id) => {
     const modalBody = state.notes.find((el) => el.id === id);
-    console.log(modalBody);
 
     dispatch({ type: SET_MODAL_BODY, payload: modalBody });
   };

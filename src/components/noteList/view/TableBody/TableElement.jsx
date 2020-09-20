@@ -7,11 +7,21 @@ import { useModalContext } from '../../../../context/ModalContext/ModalState';
 const TableElement = ({ id, title, date }) => {
   const { notes, handleDelete, getModalBody } = useFormContext();
   const { handleModal } = useModalContext();
+  let truncTitle = '';
+  if (title.length > 15) {
+    const whiteSpace = new RegExp(/\s/g);
+
+    if (whiteSpace.test(title)) {
+      truncTitle = title.slice(0, 12) + '...';
+    } else {
+      truncTitle = title.slice(0, 4) + '...';
+    }
+  }
 
   return (
     <Fragment>
       <StyledTableCell align='center'>{date}</StyledTableCell>
-      <StyledTableCell align='center'>{title}</StyledTableCell>
+      <StyledTableCell align='center'>{truncTitle || title}</StyledTableCell>
       <StyledTableCell align='center'>
         <DefaultBtn
           text='View'

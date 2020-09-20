@@ -18,9 +18,9 @@ export const customBtnTheme = (theme) => ({
     margin: theme.spacing(1),
     textTransform: 'capitalize',
     transition: '0.7s',
-    scale: 1.75,
+    transform: 'scale(1.75)',
     '&:hover': {
-      scale: 1.5,
+      transform: 'scale(1.5)',
     },
   },
   fabPosition: {

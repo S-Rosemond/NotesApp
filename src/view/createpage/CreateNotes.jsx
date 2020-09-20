@@ -25,6 +25,7 @@ const Temp = () => {
   }, []);
 
   const handleOnsubmit = () => {
+    addNote();
     history.push('/');
   };
   return (
@@ -39,7 +40,6 @@ const Temp = () => {
         <div className={styles.myt}>
           <DefaultBtn
             text='Submit'
-            handleClick={addNote}
             disable={entry.body ? false : true}
             type='submit'
           />

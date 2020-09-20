@@ -17,11 +17,11 @@ const CustomGridCard = ({ Wrapper, buttons, cards, attr }) => {
   return (
     <Fragment>
       {cards.map((card, idx) => (
-        <Wrapper {...attr}>
-          <Card key={idx} className={classes.root}>
+        <Wrapper key={idx} className='grid-item-wrapper' {...attr}>
+          <Card className={classes.root}>
             <CardHeader
               disableTypography
-              title={<Typography noWrap>{card.title}</Typography>}
+              title={<Typography noWrap={true}>{card.title}</Typography>}
               className={classes.header}
             />
             <CardContent>

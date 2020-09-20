@@ -1,40 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SetLayout, NotesList, NotesGrid } from '../../components/index';
 import FabBtn from '../../components/buttons/FabBtn';
 import { useBtnTheme } from '../../theme/useThemes/useThemes';
 import { Footer } from '../../components/index';
 import DefaultModal from '../../components/modal/DefaultModal';
-import { useModalContext } from '../../context/ModalContext/ModalState';
 import { useLayoutContext } from './../../context/LayoutState/LayoutStateProvider';
+import { Slide } from '@material-ui/core/';
 
 const HomePage = () => {
   const classes = useBtnTheme();
   const { layout, setLayout } = useLayoutContext();
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const trigger = windowSize > 700;
 
-  useEffect(() => {
-    window.addEventListener('resize', () => {
-      if (window.innerWidth < 700) setWindowSize(window.innerWidth);
-    });
-  }, []);
-  console.log(layout);
+  window.addEventListener('resize', () => {
+    let timeout;
+
+    if (timeout) {
+      return clearTimeout(timeout);
+    }
+
+    timeout = setTimeout(() => setWindowSize(window.innerWidth), 2000);
+  });
+
   return (
     <div>
-      <div style={{ marginBottom: '100px' }}>
+      <div className='layout-container'>
         <SetLayout currentLayout={layout} changeLayout={setLayout} />
-        <div>{layout === 'table' ? <NotesList /> : <NotesGrid />}</div>
+
+        {layout === 'table' ? (
+          <NotesList />
+        ) : (
+          <div className='notes-container'>
+            <NotesGrid />
+          </div>
+        )}
       </div>
 
-      {windowSize > 500 ? (
-        <div className={classes.fabPosition} title='Create a note'>
-          <FabBtn to='create' component={Link} />
-        </div>
+      {trigger ? (
+        <Slide direction='up' in={trigger}>
+          <div className={classes.fabPosition} title='Create a note'>
+            <FabBtn to='create' component={Link} />
+          </div>
+        </Slide>
       ) : (
         <Footer />
       )}
-      <DefaultModal test='test' />
+      <DefaultModal />
     </div>
   );
 };

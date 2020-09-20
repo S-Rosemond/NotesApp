@@ -1,0 +1,10 @@
+.MuiCardHeader-content,
+.MuiTypography-root > p {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+/* .MuiGrid-grid-xs-auto {
+  flex-grow: 1 !important;
+} */
