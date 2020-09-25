@@ -2,9 +2,7 @@ import React from 'react';
 import { useFormContext } from '../../../../context/FormContext/FormState';
 import TableElement from './TableElement';
 
-const NotesTableBody = () => {
-  const formContext = useFormContext();
-  const { notes } = formContext;
+const NotesTableBody = ({ notes }) => {
   // 8 max list
   return notes.map((note) => (
     <tr key={note.id}>

@@ -7,6 +7,7 @@ import {
   SET_CREATE_PAGE,
   NOTE_DELETED,
   SET_MODAL_BODY,
+  FILTERED_NOTES,
 } from './Form.types';
 
 export default function FormReducer(state, { type, payload }) {
@@ -31,6 +32,8 @@ export default function FormReducer(state, { type, payload }) {
       return { ...state, notes: payload };
     case SET_MODAL_BODY:
       return { ...state, modalBody: payload };
+    case FILTERED_NOTES:
+      return { ...state, filteredNotes: payload };
     default:
       return state;
   }

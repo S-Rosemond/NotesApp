@@ -7,7 +7,7 @@ import { useFormContext } from './../../../context/FormContext/FormState';
 import './NotesGrid.module.css';
 
 const NotesGrid = () => {
-  const { handleDelete, notes } = useFormContext();
+  const { handleDelete, notes, filteredNotes } = useFormContext();
   const { handleModal } = useModalContext();
 
   const buttons = [
@@ -32,37 +32,15 @@ const NotesGrid = () => {
     xs: 'auto',
   };
   return (
-    <Grid
-      container
-      spacing={2}
-      style={{
-        margin: '15px 0 0 0',
-        justifyContent: 'center',
-        width: '100%',
-      }}
-    >
-      <GridCard cards={notes} buttons={buttons} Wrapper={Grid} attr={attr} />
+    <Grid container spacing={2} className='notes-grid-container'>
+      <GridCard
+        cards={filteredNotes.length ? filteredNotes : notes}
+        buttons={buttons}
+        Wrapper={Grid}
+        attr={attr}
+      />
     </Grid>
   );
 };
 
 export default NotesGrid;
-
-{
-  /* <Grid
-      container
-      spacing={2}
-      style={{
-        margin: '15px 0 0 0',
-        justifyContent: 'center',
-      }}
-    >
-      <GridCard cards={notes} buttons={buttons} Wrapper={Grid} attr={attr} />
-    </Grid> */
-}
-
-{
-  /* <div className='grid-flex'>
-      <DefaultCard cards={notes} buttons={buttons} Wrapper={Grid} attr={attr} />
-    </div> */
-}

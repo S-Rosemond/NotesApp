@@ -26,7 +26,13 @@ export default function () {
             </TableRow>
           </TableHead>
           <TableBody>
-            {!!notes.length ? <NotesTableBody /> : <EmptyNotes />}
+            {!!notes.length ? (
+              <NotesTableBody
+                notes={filteredNotes.length ? filteredNotes : notes}
+              />
+            ) : (
+              <EmptyNotes />
+            )}
           </TableBody>
         </Table>
       </TableContainer>

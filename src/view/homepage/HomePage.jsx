@@ -7,10 +7,12 @@ import { Footer } from '../../components/index';
 import DefaultModal from '../../components/modal/DefaultModal';
 import { useLayoutContext } from './../../context/LayoutState/LayoutStateProvider';
 import { Slide } from '@material-ui/core/';
+import { useFormContext } from './../../context/FormContext/FormState';
 
 const HomePage = () => {
   const classes = useBtnTheme();
   const { layout, setLayout } = useLayoutContext();
+  const { notes } = useFormContext();
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const trigger = windowSize > 700;
@@ -54,3 +56,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+// notes.length >= 9 remove fab

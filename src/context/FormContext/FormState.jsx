@@ -4,6 +4,7 @@ import FormReducer from './FormReducer';
 // not sure if I want to use database yet
 // or stick with local storage: sm scale app
 import { default as uuid } from 'uuid';
+import HTMLReactParser from 'html-react-parser';
 
 import {
   SET_ENTRY,
@@ -14,12 +15,14 @@ import {
   NOTE_DELETED,
   SET_MODAL_BODY,
   NOTE_UPDATED,
+  FILTERED_NOTES,
 } from './Form.types';
 
 const FormState = (props) => {
   const initialState = {
     entry: {},
     notes: JSON.parse(localStorage.getItem('localNotes')) || [],
+    filteredNotes: [],
     createPage: false,
     modalBody: {
       body: '',
@@ -64,6 +67,18 @@ const FormState = (props) => {
   //   state.notes.slice()
   // }
 
+  const filterNotes = (e) => {
+    const newFilteredNotes = state.notes.filter((el) => {
+      const regex = new RegExp(e.target.value, 'gi');
+
+      const parsedBody = HTMLReactParser(el.body);
+
+      return el.title.match(regex) || parsedBody.props.children.match(regex);
+    });
+
+    dispatch({ type: FILTERED_NOTES, payload: newFilteredNotes });
+  };
+
   const updateNote = (id, body) => {
     let update = state.notes.find((el) => el.id === id);
 
@@ -102,6 +117,7 @@ const FormState = (props) => {
       value={{
         state,
         notes: state.notes,
+        filteredNotes: state.filteredNotes,
         entry: state.entry,
         createPage: state.createPage,
         modalBody: state.modalBody,
@@ -110,6 +126,7 @@ const FormState = (props) => {
         addNote,
         updateNote,
         deleteNote,
+        filterNotes,
         setCreatePage,
         getModalBody,
         handleDelete,

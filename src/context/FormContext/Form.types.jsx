@@ -9,5 +9,6 @@ export const NOTE_DELETED = 'NOTE_DELETED';
 export const SET_MODAL_BODY = 'SET_MODAL_BODY';
 
 export const NOTE_UPDATED = 'NOTE_UPDATED';
+export const FILTERED_NOTES = 'FILTERED_NOTES';
 
 // could make an object and export obj

@@ -15,7 +15,7 @@ import { useNavStyles } from './../../theme/useThemes/useThemes';
 
 export default function SearchAppBar() {
   const classes = useNavStyles();
-  const { createPage, notes } = useFormContext();
+  const { createPage, filteredNotes, filterNotes } = useFormContext();
   // (todo) add functionality to back arrow
   // remove/ hide Searchbar when within createpage
   // try diff fonts
@@ -25,7 +25,7 @@ export default function SearchAppBar() {
     // todo  handleChange : onChange: goes on InputBase
     // logic, plus edit/update, delete btn and edit, landing page then done
   };
-
+  console.log(filteredNotes);
   return (
     <div className={classes.root}>
       <AppBar position='static'>
@@ -61,6 +61,7 @@ export default function SearchAppBar() {
                   input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
+                onChange={filterNotes}
               />
             </div>
           )}
